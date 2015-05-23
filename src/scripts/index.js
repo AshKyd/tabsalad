@@ -4,6 +4,9 @@ window.jQuery = $;
 var fs = require('fs');
 var HTMLTable = require('./htmltable');
 
+// Register our service worker.
+require('../worker/register');
+
 // This doesn't seem necessary at this point.
 //require('../../node_modules/bootstrap/dist/js/bootstrap.min.js');
 var settings = require('./settings');

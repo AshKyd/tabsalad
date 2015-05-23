@@ -26,7 +26,8 @@ try{
 gulp.task('js', function() {
     gulp.src([
         'src/scripts/index.js',
-        'src/scripts/sandbox.js',
+        // 'src/scripts/sandbox.js',
+        'src/worker/worker.js'
         ])
         .pipe(browserify({
           debug : false
