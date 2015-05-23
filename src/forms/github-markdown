@@ -1,0 +1,8 @@
+<form class="form-inline" role="form">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="heading">
+      <label for="heading">Include headings</label>
+    </label>
+  </div>
+</form>
