@@ -3,13 +3,10 @@ window.$ = require('jquery');
 window.jQuery = $;
 var fs = require('fs');
 var HTMLTable = require('./htmltable');
+var settings = require('./settings');
 
 // Register our service worker.
 require('../worker/register');
-
-// This doesn't seem necessary at this point.
-//require('../../node_modules/bootstrap/dist/js/bootstrap.min.js');
-var settings = require('./settings');
 
 $(window).resize(function(){
     var bodyHeight = $(window).innerHeight()

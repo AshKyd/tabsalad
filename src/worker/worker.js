@@ -1,7 +1,6 @@
 require('serviceworker-cache-polyfill');
-// importScripts('cache.js');
 
-var version = 'v1';
+var version = 'v2.1.0';
 var staticCacheName = 'tabsalad-static-' + version;
 
 self.addEventListener('install', function(event) {
@@ -9,9 +8,9 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
-                '/',
-                '/style.css',
-                '/index.js',
+                './',
+                './style.css',
+                './index.js',
             ]);
         })
     )
@@ -20,7 +19,12 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
-            return response || fetch(event.request);
+            if(response){
+                console.log('Cache hit');
+                return response;
+            } else {
+                return fetch(event.request);
+            }
         })
     );
 });

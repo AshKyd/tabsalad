@@ -5,6 +5,26 @@ var HtmlTableRow = require('./row');
 var templateMarkdown = require('./template-markdown');
 var strPad = require('./strpad');
 
+function cast(val){
+	if($.isNumeric(val)){
+		return Number(val);
+	}
+
+	if(val === 'true'){
+		return true;
+	}
+
+	if(val === 'false'){
+		return false;
+	}
+
+	if(val === 'null'){
+		return null;
+	}
+
+	return val;
+}
+
 var HtmlTable = function(){}
 HtmlTable.prototype = {
 	zebra: false,
@@ -152,13 +172,13 @@ HtmlTable.prototype.getRowSize = function(max){
 		});
 	});
 	return rowSize;
-}
+};
 
 HtmlTable.prototype.templates['GitHub markdown'] = function(){
 	return templateMarkdown.call(this, {
 		headingDivider: true
 	});
-}
+};
 
 HtmlTable.prototype.templates['Atlassian JIRA'] = function(){
 	return templateMarkdown.call(this, {
@@ -168,6 +188,31 @@ HtmlTable.prototype.templates['Atlassian JIRA'] = function(){
 		wrapLineHeading: '||',
 		wrapLineContent: '| '
 	});
-}
+};
+
+HtmlTable.prototype.templates['JSON'] = function(){
+	var output;
+	if((this.thead && this.thead.rows && this.thead.rows.length)){
+		// If we have headings, return an object with named keys
+		var headings = this.thead.rows[0].cells;
+		if(this.tbody && this.tbody.rows && this.tbody.rows.length){
+			output = this.tbody.rows.map(function(row){
+				var newRow = {};
+				row.cells.forEach(function(cell, i){
+					newRow[headings[i].value] = cast(cell.value);
+				});
+				return newRow;
+			});
+		}
+	} else {
+		// Without headings, juts return a plain old array.
+		output = this.tbody.rows.map(function(row){
+			return row.cells.map(function(cell){
+				return cast(cell.value);
+			});
+		});
+	}
+	return JSON.stringify(output, null, 4);
+};
 
 module.exports = HtmlTable;
