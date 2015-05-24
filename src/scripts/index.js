@@ -75,5 +75,27 @@ $(document).ready(function(){
         return false;
     });
 
+    // Disable tab navigation feature.
+    // This is a bit of an usability nightmare.
+    // http://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea
+    $("textarea").keydown(function(e) {
+        var $this, end, start;
+        $this = $(this);
+
+        // Include tab in textarea.
+        if (e.keyCode === 9) {
+            start = this.selectionStart;
+            end = this.selectionEnd;
+            $this.val($this.val().substring(0, start) + "\t" + $this.val().substring(end));
+            this.selectionStart = this.selectionEnd = start + 1;
+            return false;
+        }
+
+        // On "escape" key, jump out to the next checkbox.
+        if(e.keyCode === 27){
+            $('.checkbox input:eq(0)').focus();
+        }
+    });
+
 
 });

@@ -1,6 +1,6 @@
 require('serviceworker-cache-polyfill');
 
-var version = 'v2.1.0';
+var version = 'v2.1.1';
 var staticCacheName = 'tabsalad-static-' + version;
 
 self.addEventListener('install', function(event) {
