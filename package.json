@@ -1,6 +1,6 @@
 {
   "name": "tabsalad",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Paste cells from your spreadsheet and convert them into HTML table markup.",
   "main": "src/scripts/index.js",
   "repository": {
