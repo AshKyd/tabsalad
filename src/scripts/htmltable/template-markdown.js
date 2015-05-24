@@ -20,7 +20,7 @@ module.exports = function(opts){
             textRow = wrap + ' ' + textRow + ' ' + wrap;
         }
 		return textRow;
-	}
+	};
 
 	var str = '';
 

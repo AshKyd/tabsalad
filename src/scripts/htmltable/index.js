@@ -25,12 +25,13 @@ function cast(val){
 	return val;
 }
 
-var HtmlTable = function(){}
+var HtmlTable = function(){};
 HtmlTable.prototype = {
 	zebra: false,
 	rowNumbers: false,
 	caption: false,
 	createFromBlob : function(blob, headings){
+		var i;
 		var data = blob
 			.replace(/^\s/m,'') // Trim starting space.
 			.replace(/\r/g,'')
@@ -38,7 +39,7 @@ HtmlTable.prototype = {
 
 		var caption = $.trim(data[0]);
 
-		for(var i=0; i<data.length; i++){
+		for(i=0; i<data.length; i++){
 			data[i] = data[i].split(/\t/);
 		}
 
@@ -49,7 +50,7 @@ HtmlTable.prototype = {
 
 		if(headings){
 			var head = [];
-			for(var i=0; i<headings.length; i++){
+			for(i=0; i<headings.length; i++){
 				head.push(data.splice(headings[i],1)[0]);
 			}
 			this.setHead(head);
@@ -60,12 +61,12 @@ HtmlTable.prototype = {
 
 	convertToTableCells : function(data){
 		var newData = [];
-		for(i in data){
+		for(var i in data){
 			if(typeof data[i] != 'object' || this.isEmptyRow(data[i]))
 				continue;
 
 			var newRow = new HtmlTableRow();
-			for(j in data[i]){
+			for(var j in data[i]){
 				newRow.cells.push(new HtmlTableCell(data[i][j],j));
 			}
 			newData.push(newRow);
@@ -76,24 +77,24 @@ HtmlTable.prototype = {
 	setHead : function(head){
 		this.thead = {
 			rows : this.convertToTableCells(head)
-		}
+		};
 	},
 
 	setData : function(data){
-		var data = $.extend([],data);
+		data = $.extend([], data);
 
 		this.tbody = {
 			rows : this.convertToTableCells(data)
-		}
+		};
 	},
 
 	/**
 	 * Is this table row ampty?
 	 */
 	isEmptyRow : function(row){
-		var row = row.join('');
+		row = row.join('');
 
-		if($.trim(row).length == 0)
+		if($.trim(row).length === 0)
 			return true;
 
 		return false;
@@ -106,14 +107,14 @@ HtmlTable.prototype = {
 		}
 		return this.templates[template].call(this);
 	}
-}
+};
 
 HtmlTable.prototype.templates = {};
 
 HtmlTable.prototype.templates.HTML = function(){
 	var template = fs.readFileSync('src/templates/htmlTable.mustache', 'utf8');
 	return Mustache.to_html(template, this);
-}
+};
 
 HtmlTable.prototype.templates.MediaWiki = function(){
 	// {|
@@ -133,11 +134,11 @@ HtmlTable.prototype.templates.MediaWiki = function(){
 
 	var rowHeadMap = function(row){
 		return row.cells.map(cellMap).join(' !! ');
-	}
+	};
 
 	var rowBodyMap = function(row){
 		return row.cells.map(cellMap).join(' || ');
-	}
+	};
 
 	var str = '';
 
@@ -155,7 +156,7 @@ HtmlTable.prototype.templates.MediaWiki = function(){
 
 	return '{|\n'+str+'\n|}';
 
-}
+};
 
 HtmlTable.prototype.getRowSize = function(max){
 	var _this = this;

@@ -9,7 +9,7 @@ var settings = require('./settings');
 require('../worker/register');
 
 $(window).resize(function(){
-    var bodyHeight = $(window).innerHeight()
+    var bodyHeight = $(window).innerHeight();
     $('body').height(bodyHeight);
     $('#editor').height(bodyHeight - $('.navbar-static-top').outerHeight());
 });
@@ -64,7 +64,7 @@ $(document).ready(function(){
     // Switch to markup view so we have feedback + can see what's going on
     $('select').on('change', function(){
         $('a[href="#markup"]').click();
-    })
+    });
 
     // Implement tabs.
     $('.nav-tabs a').on('click', function(){

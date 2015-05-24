@@ -13,7 +13,7 @@ self.addEventListener('install', function(event) {
                 './index.js',
             ]);
         })
-    )
+    );
 });
 
 self.addEventListener('fetch', function(event) {
