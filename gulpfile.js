@@ -3,27 +3,28 @@ var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 var connect = require('gulp-connect');
 var zip = require('gulp-zip');
+var del = require('del');
 var through = require('through');
 var fs = require('fs');
 var less = require('gulp-less');
 var rsync = require('gulp-rsync');
 
-var config = {};
-try{
-    config = require('./config');
-} catch(e){
-    console.error('config not found');
-    // Sample config
-    // module.exports = {
-    //     rsync: {
-    //         root: 'dist',
-    //         hostname: 'my.host',
-    //         destination: '/var/ww/whatever'
-    //     }
-    // }
-}
+// var config = {};
+// try{
+//     config = require('./config');
+// } catch(e){
+//     console.error('config not found');
+//     // Sample config
+//     // module.exports = {
+//     //     rsync: {
+//     //         root: 'dist',
+//     //         hostname: 'my.host',
+//     //         destination: '/var/ww/whatever'
+//     //     }
+//     // }
+// }
 
-gulp.task('js', function() {
+gulp.task('js', ['clean'], function() {
     gulp.src([
         'src/scripts/index.js',
         // 'src/scripts/sandbox.js',
@@ -36,50 +37,59 @@ gulp.task('js', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('html', function(){
+gulp.task('html', ['clean'], function(){
     gulp.src('src/*.html')
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('css', function(){
+gulp.task('css', ['clean'], function(){
     gulp.src('src/css/style.less')
         .pipe(less())
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('connect',function(){
+gulp.task('connect', ['html', 'css', 'js'], function(){
     connect.server({
         root: 'dist',
         livereload: false
     });
 });
 
-gulp.task('chrome-dev',function(){
+gulp.task('chrome-dev', ['build'], function(){
     gulp.src([
         'src/chrome/**',
         'dist/**'
         ])
-        .pipe(gulp.dest('chrome/'))
+        .pipe(gulp.dest('chrome/'));
 });
 
-gulp.task('chrome-dist',function(){
+gulp.task('chrome-dist', ['chrome-dev'], function(){
     gulp.src([
         'chrome/**',
         ])
         .pipe(zip('chrome.zip'))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./'));
 });
 
-if(config.rsync){
-    gulp.task('web-dist',function(){
-        gulp.src(['dist/**']).pipe(rsync(config.rsync));
-    });
-}
+gulp.task('clean', function (cb) {
+  del([
+    'dist/**',
+    'chrome/**'
+  ], function(){
+    cb();
+  });
+});
+
+// if(config.rsync){
+//     gulp.task('web-dist',function(){
+//         gulp.src(['dist/**']).pipe(rsync(config.rsync));
+//     });
+// }
 
 gulp.task('watch', function () {
     gulp.watch(['src/index.html','src/**/*'], ['build']);
 });
 
-gulp.task('build',['js','css','html','chrome-dev','chrome-dist']);
+gulp.task('build',['js','css','html']);
 gulp.task('deploy',['build','web-dist']);
-gulp.task('default',['build','connect','watch']);
+gulp.task('default',['connect', 'watch']);
