@@ -11,6 +11,6 @@
       "48": "icons/tabsalad-48.png"
    },
    "manifest_version": 2,
-   "name": "Alchemize",
-   "version": "2.1.2"
+   "name": "Tabsalad",
+   "version": "2.1.3"
 }

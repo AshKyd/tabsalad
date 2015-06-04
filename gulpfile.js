@@ -72,6 +72,7 @@ gulp.task('chrome-dist', ['chrome-dev'], function(){
 });
 
 gulp.task('clean', function (cb) {
+  return cb();
   del([
     'dist/**',
     'chrome/**'
