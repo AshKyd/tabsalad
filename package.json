@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cssmin": "uncss dist/index.html > /tmp/style && mv /tmp/style dist/style.css",
-    "build": "rm -rf dist;parcel build src/index.html;",
+    "build": "rm -rf dist;cp -r web dist;parcel build --public-url /app/ src/index.html -d dist/app;",
     "start": "parcel src/index.html"
   },
   "author": "Ash Kyd <ash@kyd.com.au>",
