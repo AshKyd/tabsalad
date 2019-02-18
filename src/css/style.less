@@ -1,111 +1,133 @@
-@import './bootstrap.less';
+@import "./bootstrap.less";
 
-.formats{
-	display:inline-block;
-	width:10em;
-	margin-bottom:-10px;
-	height:32px;
+// App sizing
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
-.navbar-right{
-	margin:7.5px 0 !important;
-	form{
-		display:inline-block;
-		margin-right:15px;
-	}
+body #editor {
+  flex: 1;
+  position: relative;
 }
-
-.navbar{
-	margin:0;
-	.btn{ // Screw with the sizes to match the .formats select.
-		height:32px;
-		padding: 5px 12px 7px;
-	}
+.left {
+  height: 100%;
+}
+.right {
+  // Subtract the tab bar height
+  height: calc(100% - 45px);
 }
 
-.status{
-	display:inline-block;
-	line-height:50px;
+// Navbar
+.formats {
+  display: inline-block;
+  width: 10em;
+  margin-bottom: -10px;
+  height: 32px;
+}
+.navbar-right {
+  margin: 7.5px 0 !important;
+  form {
+    display: inline-block;
+    margin-right: 15px;
+  }
 }
 
-.status.format:after{
-	content:" - "
+.navbar {
+  margin: 0;
+  .btn {
+    // Screw with the sizes to match the .formats select.
+    height: 32px;
+    padding: 5px 12px 7px;
+  }
+}
+
+.status {
+  display: inline-block;
+  line-height: 50px;
+}
+
+.status.format:after {
+  content: " - ";
 }
 
 // Dumb Bootstrap responsive stuff.
-.collapsed{
-	display:none;
+.collapsed {
+  display: none;
 }
 
-#editor{
-	position:relative;
+#editor {
+  position: relative;
 
-	.left,
-	#preview,
-	#markup{
-		display:block;
-		width:50%;
-		top:0;
-		bottom:0;
-		position:absolute;
-		overflow: auto;
-		box-sizing: border-box;
-		padding: 15px;
-		font-family: monospace;
-		border:none;
-		border-radius: 0;
-		outline: none;
-	}
-	.left{
-		left:0;
-		background:white;
-	}
+  .left,
+  #preview,
+  #markup {
+    display: block;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 15px;
+    font-family: monospace;
+    border: none;
+    border-radius: 0;
+    outline: none;
+  }
+  .left {
+    left: 0;
+    background: white;
+  }
 
-	.left,
-	#markup{
-		white-space: pre;
-	}
+  .left,
+  #markup {
+    white-space: pre;
+  }
 
-	#preview,
-	#markup{
-		right:0;
-		box-shadow:inset 10px -10px 3px -10px rgba(0,0,0,.2);
-		opacity:1;
+  #preview,
+  #markup {
+    right: 0;
+    box-shadow: inset 10px -10px 3px -10px rgba(0, 0, 0, 0.2);
+    opacity: 1;
 
-		border-top:1px solid #dddddd;
-	}
-	#markup{
-		background: #F8F8F8;
-	}
+    border-top: 1px solid #dddddd;
+  }
+  #markup {
+    background: #f8f8f8;
+  }
 }
 
-.nav-tabs{
-	position:absolute;
-	top:9px;
-	left:50%;
-	position:absolute;
-	box-sizing:border-box;
-	border-bottom:none;
-	a{
-		color:#555;
-	}
+.nav-tabs {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  position: absolute;
+  box-sizing: border-box;
+  border-bottom: none;
+  a {
+    color: #555;
+  }
 }
 
-.checkbox{
-	display: inline-block;
-	margin-top: 0;
-	margin-bottom: 0;
-	vertical-align: middle;
+.checkbox {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
 
 @media (max-width: 940px) {
-	.nav-tabs{
-		top:56px;
-		margin-left:10px;
-	}
-	#editor{
-		#preview,
-		#markup{
-			top:45px;
-		}
-	}
+  .nav-tabs {
+    top: 56px;
+    margin-left: 10px;
+  }
+  #editor {
+    #preview,
+    #markup {
+      top: 45px;
+    }
+  }
 }
