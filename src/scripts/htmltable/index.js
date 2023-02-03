@@ -177,16 +177,6 @@ HtmlTable.prototype.templates["GitHub markdown"] = function() {
   });
 };
 
-HtmlTable.prototype.templates["Atlassian JIRA"] = function() {
-  return templateMarkdown.call(this, {
-    headingDivider: false,
-    separatorHeading: " || ",
-    separatorBody: " |  ",
-    wrapLineHeading: "||",
-    wrapLineContent: "| "
-  });
-};
-
 HtmlTable.prototype.templates["JSON"] = function() {
   var output;
   if (this.thead && this.thead.rows && this.thead.rows.length) {
