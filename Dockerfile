@@ -23,7 +23,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy built assets from the builder stage
-COPY --from=builder /dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Create the data directory for logs and ensure permissions
 RUN mkdir -p /data && chown -R nginx:nginx /data
