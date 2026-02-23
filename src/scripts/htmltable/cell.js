@@ -1,17 +1,17 @@
-var HtmlTableCell = function(contents, index) {
+const HtmlTableCell = function (contents, index) {
   this.value = contents;
   this.index = index;
 };
 
 HtmlTableCell.prototype = {
   lineBreak: "\n",
-  wikiSeparator: function() {
+  wikiSeparator: function () {
     if (this.index === 0) {
       return "|";
     } else {
       return "||";
     }
-  }
+  },
 };
 
-module.exports = HtmlTableCell;
+export default HtmlTableCell;

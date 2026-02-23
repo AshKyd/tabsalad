@@ -1,7 +1,8 @@
-var HtmlTableCell = require("./cell");
-var HtmlTableRow = function(contents) {
+import HtmlTableCell from "./cell";
+
+const HtmlTableRow = function () {
   this.cells = [];
 };
 HtmlTableRow.prototype = HtmlTableCell.prototype;
 
-module.exports = HtmlTableRow;
+export default HtmlTableRow;

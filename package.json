@@ -9,8 +9,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist;cp -r web dist;parcel build --public-url /app/ src/index.html -d dist/app;",
-    "start": "parcel src/index.html"
+    "dev": "vite src",
+    "dev:web": "vite web",
+    "build:web": "vite build web --outDir ../dist",
+    "build:app": "vite build src --base /app/ --outDir ../dist/app",
+    "build": "rm -rf dist && npm run build:web && npm run build:app",
+    "start": "npm run dev"
   },
   "author": "Ash Kyd <ash@kyd.com.au>",
   "license": "ISC",
@@ -19,14 +23,6 @@
     "jquery": "^3.3.1",
     "less": "^3.9.0",
     "mustache": "^3.0.1",
-    "parcel": "^1.11.0",
-    "parcel-plugin-sw-precache": "^1.0.4",
-    "uglify-js": "^3.4.9"
-  },
-  "browserify": {
-    "transform": [
-      "brfs"
-    ]
-  },
-  "dependencies": {}
+    "vite": "^6.4.1"
+  }
 }

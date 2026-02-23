@@ -1,0 +1,19 @@
+services:
+  web:
+    container_name: tabsalad.kyd.au
+    build: .
+    restart: always
+    volumes:
+      - ./data:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.tabsalad.rule=Host(`tabsalad.kyd.au`)
+      - traefik.http.routers.tabsalad.entrypoints=websecure
+      - traefik.http.routers.tabsalad.tls.certresolver=le
+      - traefik.http.services.tabsalad.loadbalancer.server.port=80
+      - traefik.docker.network=traefik_default
+    networks:
+      - traefik_default
+networks:
+  traefik_default:
+    external: true

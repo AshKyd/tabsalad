@@ -1,14 +1,15 @@
-// Globals and general ugliness.
-window.$ = require("jquery");
-window.jQuery = $;
-var fs = require("fs");
-var HTMLTable = require("./htmltable");
-var settings = require("./settings");
+import $ from "jquery";
+import HTMLTable from "./htmltable";
+import * as settings from "./settings";
 
-$(document).ready(function() {
+// Globals for any legacy code or console debugging.
+window.$ = $;
+window.jQuery = $;
+
+$(document).ready(function () {
   // Populate the select
   var $select = $("select");
-  Object.keys(HTMLTable.prototype.templates).forEach(function(templateName) {
+  Object.keys(HTMLTable.prototype.templates).forEach(function (templateName) {
     var $option = $("<option></option>")
       .text(templateName)
       .attr("value", templateName);
@@ -18,20 +19,20 @@ $(document).ready(function() {
   var $left = $(".left").focus();
   var $right = $(".right");
   var $bottom = $(".bottom");
-  var $tabs = $(".nav-tabs");
 
   // Screw it, I should have used a proper library.
   var $heading = $("#heading");
   var $compact = $("#compact");
 
   // Load up our settings
-  settings.get(function(err, settings) {
-    if (err) {
+  settings.get(function (err, savedSettings) {
+    if (err || !savedSettings) {
       return;
     }
-    $select.val(settings.mode);
-    $heading.prop("checked", settings.heading);
-    $compact.prop("checked", settings.compact);
+    $select.val(savedSettings.mode);
+    $heading.prop("checked", savedSettings.heading);
+    $compact.prop("checked", savedSettings.compact);
+    renderplz();
   });
 
   // Main render
@@ -39,7 +40,7 @@ $(document).ready(function() {
     var state = {
       mode: $select.val(),
       heading: $heading.is(":checked"),
-      compact: $compact.is(":checked")
+      compact: $compact.is(":checked"),
     };
     settings.set(state);
 
@@ -53,19 +54,14 @@ $(document).ready(function() {
   $("input, select, .left").on("change keyup", renderplz);
 
   // Switch to markup view so we have feedback + can see what's going on
-  $("select").on("change", function() {
+  $("select").on("change", function () {
     $('a[href="#markup"]').click();
   });
 
   // Implement tabs.
-  $(".nav-tabs a").on("click", function() {
-    $(this)
-      .closest(".nav-tabs")
-      .find("li")
-      .removeClass("active");
-    $(this)
-      .closest("li")
-      .addClass("active");
+  $(".nav-tabs a").on("click", function () {
+    $(this).closest(".nav-tabs").find("li").removeClass("active");
+    $(this).closest("li").addClass("active");
     $(".tabcontent").addClass("hidden");
     $($(this).attr("href")).removeClass("hidden");
     return false;
@@ -74,7 +70,7 @@ $(document).ready(function() {
   // Disable tab navigation feature.
   // This is a bit of an usability nightmare.
   // http://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea
-  $("textarea").keydown(function(e) {
+  $("textarea").keydown(function (e) {
     var $this, end, start;
     $this = $(this);
 
@@ -83,7 +79,7 @@ $(document).ready(function() {
       start = this.selectionStart;
       end = this.selectionEnd;
       $this.val(
-        $this.val().substring(0, start) + "\t" + $this.val().substring(end)
+        $this.val().substring(0, start) + "\t" + $this.val().substring(end),
       );
       this.selectionStart = this.selectionEnd = start + 1;
       return false;

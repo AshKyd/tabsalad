@@ -1,6 +1,6 @@
-var strPad = require("./strpad");
+import strPad from "./strpad";
 
-module.exports = function(opts) {
+export default function (opts) {
   // First Header  | Second Header
   // ------------- | -------------
   // Content Cell  | Content Cell
@@ -8,11 +8,11 @@ module.exports = function(opts) {
 
   var rowSize = this.getRowSize();
 
-  var cellMap = function(cell, i) {
+  var cellMap = function (cell, i) {
     return strPad(cell.value, rowSize[i] + 1, " ");
   };
 
-  var rowBodyMap = function(row, separator, wrap) {
+  var rowBodyMap = function (row, separator, wrap) {
     separator = separator || " | ";
     var textRow = row.cells.map(cellMap).join(separator);
     if (wrap) {
@@ -30,7 +30,7 @@ module.exports = function(opts) {
   if (this.thead && this.thead.rows && this.thead.rows.length) {
     str +=
       this.thead.rows
-        .map(function(row) {
+        .map(function (row) {
           return rowBodyMap(row, opts.separatorHeading, opts.wrapLineHeading);
         })
         .join("\n") + "\n";
@@ -39,7 +39,7 @@ module.exports = function(opts) {
     if (opts.headingDivider) {
       str +=
         Object.keys(rowSize)
-          .map(function(i, row) {
+          .map(function (i) {
             return strPad("", rowSize[i] + 1, "-");
           })
           .join("-|-") + "\n";
@@ -48,11 +48,11 @@ module.exports = function(opts) {
 
   if (this.tbody && this.tbody.rows && this.tbody.rows.length) {
     str += this.tbody.rows
-      .map(function(row) {
+      .map(function (row) {
         return rowBodyMap(row, opts.separatorBody, opts.wrapLineContent);
       })
       .join("\n");
   }
 
   return str;
-};
+}
