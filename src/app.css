@@ -1,0 +1,32 @@
+:root {
+	--font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--ui-bg-regular);
+	color: var(--ui-text-regular);
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 2rem;
+}
+
+section {
+	padding: 6rem 0;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	line-height: 1.1;
+}
+
+p {
+	line-height: 1.6;
+	color: var(--ui-text-secondary);
+}
