@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import SEO from '$lib/SEO.svelte';
 	import { TabSalad } from '$lib/tabsalad.svelte.js';
 	import {
@@ -160,7 +160,14 @@
 					></textarea>
 				{:else}
 					<div class="content-view" class:hidden={activeId !== 'markup'}>
-						<div class="markup-scroll">
+						<div
+							class="markup-scroll"
+							onclick={(e) => selectContent(e.currentTarget)}
+							onkeydown={(e) =>
+								(e.key === 'Enter' || e.key === ' ') && selectContent(e.currentTarget)}
+							role="button"
+							tabindex="0"
+						>
 							<pre class="highlighted-code"><code
 									class="language-{app.mode === 'MediaWiki'
 										? 'wiki'
@@ -380,6 +387,7 @@
 		tab-size: 4;
 		white-space: pre-wrap !important;
 		word-break: break-all !important;
+		user-select: all;
 	}
 
 	/* Override Prism default white background to match our UI if needed, 
@@ -440,15 +448,6 @@
 		margin: 0 auto;
 	}
 
-	.about-content-body {
-		padding: 2rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1.25rem;
-		line-height: 1.5;
-		color: var(--akui-fg-secondary);
-	}
-
 	.about-logo-row {
 		display: flex;
 		align-items: center;
@@ -474,10 +473,6 @@
 		justify-content: center;
 		margin-top: 2rem;
 		margin-bottom: 0.5rem;
-	}
-
-	.about-social-group {
-		width: fit-content;
 	}
 
 	.about-copyright {
