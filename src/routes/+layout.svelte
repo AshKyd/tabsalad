@@ -1,7 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+
 	import '../app.css';
+
 	let { children } = $props();
 
 	onMount(() => {

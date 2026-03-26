@@ -9,12 +9,14 @@
 		MenuButton,
 		MenuItem,
 		Modal,
-		Icon,
 		InputGroup,
 		Padding
 	} from 'svelte-akui';
+
 	import { onMount, untrack } from 'svelte';
+	import { pwa } from '$lib/pwa.svelte.js';
 	import Prism from 'prismjs';
+
 	import 'prismjs/components/prism-wiki';
 	import 'prismjs/components/prism-markdown';
 	import 'prismjs/components/prism-json';
@@ -34,8 +36,9 @@
 
 	onMount(() => {
 		const checkMobile = () => {
-			isMobile = window.innerWidth < 1024;
+			isMobile = window.innerWidth < 1034;
 		};
+
 		checkMobile();
 		window.addEventListener('resize', checkMobile);
 		return () => window.removeEventListener('resize', checkMobile);
@@ -80,6 +83,21 @@
 		copied = true;
 		setTimeout(() => (copied = false), 2000);
 	}
+
+	function handleKeydown(e: KeyboardEvent) {
+		if (e.key !== 'Tab') return;
+
+		e.preventDefault();
+		const el = e.currentTarget as HTMLTextAreaElement;
+		const { selectionStart, selectionEnd } = el;
+
+		app.input = app.input.substring(0, selectionStart) + '\t' + app.input.substring(selectionEnd);
+
+		// Restore cursor position
+		setTimeout(() => {
+			el.selectionStart = el.selectionEnd = selectionStart + 1;
+		});
+	}
 </script>
 
 <SEO
@@ -112,7 +130,7 @@
 	<div class="header-controls">
 		<label class="checkbox-label">
 			<input type="checkbox" bind:checked={app.heading} />
-			<span>Include headings</span>
+			<span>{isMobile ? 'Headings' : 'Include headings'}</span>
 		</label>
 
 		<div class="select-wrapper">
@@ -121,6 +139,9 @@
 
 		{#snippet menuItems()}
 			<MenuItem label={copied ? 'Copied!' : 'Copy Markup'} icon="clipboard" onclick={copyOutput} />
+			{#if pwa.installPrompt}
+				<MenuItem label="Install Tabsalad" icon="download" onclick={() => pwa.install()} />
+			{/if}
 			<MenuItem label="About Tabsalad" icon="info-circle" onclick={() => (showAbout = true)} />
 		{/snippet}
 
@@ -140,6 +161,7 @@
 			<div class="input-panel">
 				<textarea
 					bind:value={app.input}
+					onkeydown={handleKeydown}
 					placeholder="Paste spreadsheet cells here (Tab separated)"
 					class="raw-textarea"
 				></textarea>
@@ -155,6 +177,7 @@
 				{#if activeId === 'edit' && isMobile}
 					<textarea
 						bind:value={app.input}
+						onkeydown={handleKeydown}
 						placeholder="Paste spreadsheet cells here (Tab separated)"
 						class="raw-textarea"
 					></textarea>
@@ -284,7 +307,13 @@
 	}
 
 	.select-wrapper {
-		width: 140px;
+		width: 180px;
+	}
+
+	@media (max-width: 1140px) {
+		.select-wrapper {
+			width: 140px;
+		}
 	}
 
 	.app-container {
@@ -418,16 +447,20 @@
 		border-radius: 0;
 	}
 
-	@media (max-width: 1023px) {
+	@media (max-width: 1033px) {
 		.header-controls {
-			gap: 0.5rem;
+			gap: 0.25rem;
 		}
 		.select-wrapper {
 			width: 110px;
 		}
+		.checkbox-label {
+			gap: 0.25rem;
+		}
 		.checkbox-label span {
 			display: inline;
 		}
+
 		.output-tabs {
 			margin-top: 0;
 			z-index: 10;
