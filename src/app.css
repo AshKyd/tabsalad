@@ -30,3 +30,10 @@ p {
 	line-height: 1.6;
 	color: var(--ui-text-secondary);
 }
+
+/* Prism GitHub Themes */
+@import 'prism-theme-github/themes/prism-theme-github-light.css';
+
+@media (prefers-color-scheme: dark) {
+	@import 'prism-theme-github/themes/prism-theme-github-dark.css';
+}

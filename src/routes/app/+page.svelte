@@ -20,7 +20,6 @@
 	import 'prismjs/components/prism-wiki';
 	import 'prismjs/components/prism-markdown';
 	import 'prismjs/components/prism-json';
-	import 'prismjs/themes/prism.css';
 
 	const app = new TabSalad();
 
@@ -407,7 +406,7 @@
 		display: flex;
 		flex-direction: column;
 		overflow: auto;
-		background-color: white;
+		background-color: var(--akui-bg);
 		min-height: 0;
 	}
 
@@ -448,8 +447,8 @@
 		flex: 1;
 		padding: 2rem;
 		overflow: auto;
-		background-color: white;
-		color: black;
+		background-color: var(--akui-bg);
+		color: var(--akui-fg);
 		border-radius: 0;
 	}
 
@@ -527,12 +526,12 @@
 	}
 
 	:global(.preview-area th, .preview-area td) {
-		border: 1px solid #ddd;
+		border: 1px solid var(--akui-border-input);
 		padding: 8px;
 		text-align: left;
 	}
 
 	:global(.preview-area th) {
-		background-color: #f2f2f2;
+		background-color: var(--akui-bg-secondary);
 	}
 </style>

@@ -37,6 +37,8 @@
 	},
 	"dependencies": {
 		"mustache": "^4.2.0",
+		"prism-theme-github": "^1.0.2",
+		"prism-themes": "^1.9.0",
 		"prismjs": "^1.30.0",
 		"svelte-akui": "github:AshKyd/svelte-akui"
 	}
