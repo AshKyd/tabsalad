@@ -1,0 +1,8 @@
+node_modules
+.svelte-kit
+dist
+.git
+.DS_Store
+.parcel-cache
+.cache
+tabsalad-legacy
