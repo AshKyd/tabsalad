@@ -6,7 +6,7 @@
 
 <header class="page-header">
 	<div class="container">
-		<h1><img src="/favicon.ico" alt="" /> Tabsalad</h1>
+		<h1><img src="/favicon.ico" alt="" width="32" height="32" /> Tabsalad</h1>
 	</div>
 </header>
 

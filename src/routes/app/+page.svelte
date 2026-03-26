@@ -123,7 +123,13 @@
 
 <Header>
 	{#snippet title()}
-		<img src="/favicon.ico" alt="" style="height: 1.5rem; margin-right: 0.5rem;" />
+		<img
+			src="/favicon.ico"
+			alt=""
+			width="24"
+			height="24"
+			style="height: 1.5rem; margin-right: 0.5rem;"
+		/>
 		Tabsalad
 	{/snippet}
 
@@ -244,7 +250,7 @@
 {#if showAbout}
 	<Modal title="About Tabsalad" onClose={() => (showAbout = false)} fullscreenOnMobile={true}>
 		{#snippet iconSnippet()}
-			<img src="/favicon.ico" alt="" />
+			<img src="/favicon.ico" alt="" width="32" height="32" />
 		{/snippet}
 		<div class="about-modal-inner">
 			<Padding size="l">
