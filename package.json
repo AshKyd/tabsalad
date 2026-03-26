@@ -22,6 +22,7 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@types/mustache": "^4.2.6",
 		"@types/node": "^24",
+		"bootstrap-icons": "^1.13.1",
 		"eslint": "^10.0.3",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.15.2",
@@ -37,6 +38,6 @@
 	"dependencies": {
 		"mustache": "^4.2.0",
 		"prismjs": "^1.30.0",
-		"svelte-akui": "file:../svelte-akui"
+		"svelte-akui": "github:AshKyd/svelte-akui"
 	}
 }

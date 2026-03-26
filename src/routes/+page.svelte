@@ -1,122 +1,122 @@
 <script>
-	// No logic needed
+	import SEO from '$lib/SEO.svelte';
 </script>
 
-<div class="landing-page-root">
-	<header class="page-header">
+<SEO />
+
+<header class="page-header">
+	<div class="container">
+		<h1><img src="/favicon.ico" alt="" /> Tabsalad</h1>
+	</div>
+</header>
+
+<main>
+	<section class="hero">
 		<div class="container">
-			<h1><img src="/favicon.ico" alt="" /> Tabsalad</h1>
+			<div class="hero-content">
+				<h2>Transform spreadsheet cells into clean markup.</h2>
+				<p>
+					Paste data from Excel or Google Sheets and instantly generate optimized table markup for
+					HTML, GitHub, JIRA, MediaWiki, or JSON.
+				</p>
+				<div class="cta-group">
+					<a href="/app/" class="btn btn-primary">Launch Application</a>
+				</div>
+			</div>
 		</div>
-	</header>
+	</section>
 
-	<main>
-		<section class="hero">
-			<div class="container">
-				<div class="hero-content">
-					<h2>Transform spreadsheet cells into clean markup.</h2>
-					<p>
-						Paste data from Excel or Google Sheets and instantly generate optimized table markup for
-						HTML, GitHub, JIRA, MediaWiki, or JSON.
-					</p>
-					<div class="cta-group">
-						<a href="/app/" class="btn btn-primary">Launch Application</a>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="formats">
-			<div class="container">
-				<header class="section-header">
-					<h2>Seamlessly integrated formats.</h2>
-					<p>One tool for all your documentation and web development needs.</p>
-				</header>
-
-				<div class="points-grid">
-					<div class="point-card">
-						<img style="--color: #fddb3c" alt="Mediawiki" src="/mediawiki.png" />
-						<p>MediaWiki</p>
-					</div>
-					<div class="point-card">
-						<img style="--color: #4b95d4" alt="JIRA" src="/jira.png" />
-						<p>Atlassian JIRA</p>
-					</div>
-					<div class="point-card">
-						<img style="--color: #f06527" alt="Markdown" src="/github.png" />
-						<p>GitHub Markdown</p>
-					</div>
-					<div class="point-card">
-						<img style="--color: #e2e4ec" alt="HTML5" src="/HTML5.svg" />
-						<p>Clean HTML5</p>
-					</div>
-					<div class="point-card">
-						<img style="--color: #11a55c" alt="JSON" src="/json.svg" />
-						<p>Structured JSON</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="testimonials-section">
-			<div class="container">
-				<div class="testimonials-grid">
-					<figure class="testimonial">
-						<blockquote>
-							“Great time saver! Dead easy changing my Google Sheets data into a good display in a
-							web document.”
-						</blockquote>
-						<figcaption>— Adrian F</figcaption>
-					</figure>
-					<figure class="testimonial">
-						<blockquote>
-							“Simplest and best solution I've found for getting my data published quickly. I'm
-							going to wear out my keyboard with how much I'm using this.”
-						</blockquote>
-						<figcaption>— A Google User</figcaption>
-					</figure>
-					<figure class="testimonial">
-						<blockquote>
-							“Great app to quickly convert tables between different formats and languages.”
-						</blockquote>
-						<figcaption>— Or S</figcaption>
-					</figure>
-				</div>
-			</div>
-		</section>
-
-		<section class="cta">
-			<div class="container">
-				<h2>Ready to streamline your workflow?</h2>
-				<div style="margin-top: 3rem">
-					<a href="/app/" class="btn btn-primary">Open Tabsalad</a>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<footer>
+	<section class="formats">
 		<div class="container">
-			<p>
-				A project by <a href="https://ashk.au/">Ash Kyd</a>. Found on
-				<a href="https://github.com/AshKyd/tabsalad">GitHub</a>.
-			</p>
-		</div>
-	</footer>
+			<header class="section-header">
+				<h2>Seamlessly integrated formats.</h2>
+				<p>One tool for all your documentation and web development needs.</p>
+			</header>
 
-	<a href="https://github.com/ashkyd/tabsalad" class="fork-me">
-		<img
-			alt="Fork me on GitHub"
-			src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=120%2C120"
-			width="120"
-			height="120"
-		/>
-	</a>
-</div>
+			<div class="points-grid">
+				<div class="point-card">
+					<img style="--color: #fddb3c" alt="Mediawiki" src="/mediawiki.png" />
+					<p>MediaWiki</p>
+				</div>
+				<div class="point-card">
+					<img style="--color: #4b95d4" alt="JIRA" src="/jira.png" />
+					<p>Atlassian JIRA</p>
+				</div>
+				<div class="point-card">
+					<img style="--color: #f06527" alt="Markdown" src="/github.png" />
+					<p>GitHub Markdown</p>
+				</div>
+				<div class="point-card">
+					<img style="--color: #e2e4ec" alt="HTML5" src="/HTML5.svg" />
+					<p>Clean HTML5</p>
+				</div>
+				<div class="point-card">
+					<img style="--color: #11a55c" alt="JSON" src="/json.svg" />
+					<p>Structured JSON</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="testimonials-section">
+		<div class="container">
+			<div class="testimonials-grid">
+				<figure class="testimonial">
+					<blockquote>
+						“Great time saver! Dead easy changing my Google Sheets data into a good display in a web
+						document.”
+					</blockquote>
+					<figcaption>— Adrian F</figcaption>
+				</figure>
+				<figure class="testimonial">
+					<blockquote>
+						“Simplest and best solution I've found for getting my data published quickly. I'm going
+						to wear out my keyboard with how much I'm using this.”
+					</blockquote>
+					<figcaption>— A Google User</figcaption>
+				</figure>
+				<figure class="testimonial">
+					<blockquote>
+						“Great app to quickly convert tables between different formats and languages.”
+					</blockquote>
+					<figcaption>— Or S</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta">
+		<div class="container">
+			<h2>Ready to streamline your workflow?</h2>
+			<div style="margin-top: 3rem">
+				<a href="/app/" class="btn btn-primary">Open Tabsalad</a>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer>
+	<div class="container">
+		<p>
+			A project by <a href="https://ashk.au/">Ash Kyd</a>. Found on
+			<a href="https://github.com/AshKyd/tabsalad">GitHub</a>.
+		</p>
+	</div>
+</footer>
+
+<a href="https://github.com/ashkyd/tabsalad" class="fork-me">
+	<img
+		alt="Fork me on GitHub"
+		src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=120%2C120"
+		width="120"
+		height="120"
+	/>
+</a>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-	.landing-page-root {
+	:global(:root) {
 		--primary: #f68f34;
 		--primary-dark: #e27f27;
 		--secondary: #1f1911;
@@ -140,19 +140,68 @@
 		--radius-lg: 32px;
 
 		--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-		font-family: var(--font-main);
-		background-color: var(--bg-dark);
-		color: var(--fg-dark);
-		line-height: 1.6;
-		min-height: 100vh;
 	}
 
-	:global(body) {
+	:global(*) {
+		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
 
+	:global(body) {
+		font-family: var(--font-main) !important;
+		background-color: var(--bg-dark) !important;
+		color: var(--fg-dark) !important;
+		line-height: 1.6;
+		overflow-x: hidden;
+	}
+
+	/* Typography */
+	h1,
+	h2,
+	h3 {
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		line-height: 1.1;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 8vw, 4.5rem);
+	}
+
+	h2 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		margin-bottom: 1.5rem;
+	}
+
+	p {
+		font-size: 1.1rem;
+		color: var(--fg-muted);
+	}
+
+	a {
+		color: var(--primary);
+		text-decoration: none;
+		transition: var(--transition);
+	}
+
+	a:hover {
+		filter: brightness(1.2);
+	}
+
+	/* Layout */
+	.container {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	section {
+		padding: 100px 0;
+	}
+
+	/* Header */
+	/* Page Header */
 	.page-header {
 		padding: 1.5rem 0;
 		position: absolute;
@@ -160,63 +209,19 @@
 		z-index: 100;
 	}
 
-	.container {
-		max-width: 1100px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	h1 {
+	header h1 {
 		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		margin: 0;
-		font-weight: 800;
 	}
 
-	h1 img {
+	header h1 img {
 		width: 32px;
 		height: 32px;
 	}
 
-	h2 {
-		font-weight: 800;
-		letter-spacing: -0.02em;
-		line-height: 1.1;
-	}
-
-	.hero {
-		min-height: 90vh;
-		display: flex;
-		align-items: center;
-		padding: 100px 0;
-		background:
-			radial-gradient(circle at 80% 20%, rgba(246, 143, 52, 0.15), transparent 40%),
-			radial-gradient(circle at 20% 80%, rgba(226, 127, 39, 0.1), transparent 40%);
-	}
-
-	.hero-content {
-		max-width: 700px;
-		animation: fadeIn 1s ease-out;
-	}
-
-	.hero h2 {
-		font-size: clamp(2.5rem, 8vw, 4.5rem);
-		background: linear-gradient(to right, #fff, #aaa);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		margin-bottom: 2rem;
-	}
-
-	.hero p {
-		font-size: 1.25rem;
-		margin-bottom: 3rem;
-		max-width: 600px;
-		color: var(--fg-muted);
-	}
-
+	/* Button */
 	.btn {
 		display: inline-flex;
 		align-items: center;
@@ -228,7 +233,6 @@
 		transition: var(--transition);
 		cursor: pointer;
 		border: none;
-		text-decoration: none;
 	}
 
 	.btn-primary {
@@ -242,20 +246,43 @@
 		box-shadow: 0 15px 30px rgba(246, 143, 52, 0.4);
 	}
 
+	/* Hero Section */
+	.hero {
+		min-height: 90vh;
+		display: flex;
+		align-items: center;
+		background:
+			radial-gradient(circle at 80% 20%, rgba(246, 143, 52, 0.15), transparent 40%),
+			radial-gradient(circle at 20% 80%, rgba(226, 127, 39, 0.1), transparent 40%);
+		position: relative;
+	}
+
+	.hero-content {
+		max-width: 700px;
+	}
+
+	.hero h2 {
+		background: linear-gradient(to right, #fff, #aaa);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		margin-bottom: 2rem;
+	}
+
+	.hero p {
+		font-size: 1.25rem;
+		margin-bottom: 3rem;
+		max-width: 600px;
+	}
+
+	/* Formats Section */
 	.formats {
 		background: var(--bg-card);
-		padding: 100px 0;
 	}
 
 	.section-header {
 		margin-bottom: 4rem;
 		max-width: 600px;
-	}
-
-	.section-header h2 {
-		font-size: clamp(2rem, 5vw, 3rem);
-		color: #fff;
-		margin-bottom: 1rem;
 	}
 
 	.points-grid {
@@ -272,7 +299,6 @@
 		border-radius: var(--radius-md);
 		text-align: center;
 		transition: var(--transition);
-		animation: fadeIn 1s ease-out both;
 	}
 
 	.point-card:hover {
@@ -288,8 +314,26 @@
 		padding: 10px;
 		border-radius: 12px;
 		background: var(--color, #fff);
+		box-shadow: 0 0 0 rgba(255, 255, 255, 0);
 		transition: var(--transition);
 		animation: glow 3s ease-in-out infinite;
+		animation-delay: var(--delay, 0s);
+	}
+
+	.point-card:nth-child(1) img {
+		--delay: 0s;
+	}
+	.point-card:nth-child(2) img {
+		--delay: 0.6s;
+	}
+	.point-card:nth-child(3) img {
+		--delay: 1.2s;
+	}
+	.point-card:nth-child(4) img {
+		--delay: 1.8s;
+	}
+	.point-card:nth-child(5) img {
+		--delay: 2.4s;
 	}
 
 	.point-card:hover img {
@@ -302,11 +346,11 @@
 		color: #fff;
 		font-weight: 600;
 		font-size: 1.1rem;
-		margin: 0;
 	}
 
+	/* Testimonials */
 	.testimonials-section {
-		padding: 100px 0 150px 0;
+		padding-bottom: 150px;
 	}
 
 	.testimonials-grid {
@@ -316,10 +360,10 @@
 		margin-top: 3rem;
 	}
 
-	.testimonial blockquote {
+	blockquote {
 		font-size: 1.2rem;
 		font-style: italic;
-		margin: 0 0 1.5rem 0;
+		margin-bottom: 1.5rem;
 		color: #fff;
 		position: relative;
 	}
@@ -332,7 +376,6 @@
 		font-size: 4rem;
 		opacity: 0.1;
 		color: var(--primary);
-		line-height: 1;
 	}
 
 	figcaption {
@@ -340,34 +383,24 @@
 		font-weight: 600;
 	}
 
+	/* Call to Action */
 	.cta {
 		background: linear-gradient(135deg, var(--bg-card), #000);
 		text-align: center;
-		padding: 100px 0;
 		border-top: 1px solid var(--glass-border);
 	}
 
-	.cta h2 {
-		font-size: clamp(2rem, 5vw, 3rem);
-		color: #fff;
-		margin-bottom: 0;
-	}
-
+	/* Footer */
 	footer {
 		padding: 4rem 0;
 		border-top: 1px solid var(--glass-border);
 		color: var(--fg-muted);
 		font-size: 0.9rem;
-		text-align: center;
 	}
 
 	footer p {
-		margin: 0;
-	}
-
-	footer a {
-		color: var(--primary);
-		text-decoration: none;
+		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.fork-me {
@@ -383,6 +416,7 @@
 		opacity: 1;
 	}
 
+	/* Animations */
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -394,16 +428,12 @@
 		}
 	}
 
-	@keyframes glow {
-		0%,
-		100% {
-			filter: drop-shadow(0 0 2px var(--color, #fff));
-			opacity: 0.8;
-		}
-		50% {
-			filter: drop-shadow(0 0 10px var(--color, #fff));
-			opacity: 1;
-		}
+	.hero-content {
+		animation: fadeIn 1s ease-out;
+	}
+
+	.point-card {
+		animation: fadeIn 1s ease-out both;
 	}
 
 	.point-card:nth-child(1) {
@@ -420,5 +450,17 @@
 	}
 	.point-card:nth-child(5) {
 		animation-delay: 0.6s;
+	}
+
+	@keyframes glow {
+		0%,
+		100% {
+			filter: drop-shadow(0 0 2px var(--color, #fff));
+			opacity: 0.8;
+		}
+		50% {
+			filter: drop-shadow(0 0 10px var(--color, #fff));
+			opacity: 1;
+		}
 	}
 </style>

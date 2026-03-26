@@ -1,4 +1,5 @@
 <script>
+	import SEO from '$lib/SEO.svelte';
 	import { TabSalad } from '$lib/tabsalad.svelte.js';
 	import {
 		Tabs,
@@ -9,7 +10,8 @@
 		MenuItem,
 		Modal,
 		Icon,
-		InputGroup
+		InputGroup,
+		Padding
 	} from 'svelte-akui';
 	import { onMount, untrack } from 'svelte';
 	import Prism from 'prismjs';
@@ -79,6 +81,27 @@
 		setTimeout(() => (copied = false), 2000);
 	}
 </script>
+
+<SEO
+	title="Table Markup Generator | Tabsalad"
+	description="The Tabsalad conversion tool. Paste your spreadsheet data and instantly generate optimized table markup."
+	url="https://tabsalad.kyd.au/app/"
+	themeColor="#2563eb"
+/>
+
+<svelte:head>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "Tabsalad App",
+			"url": "https://tabsalad.kyd.au/app/",
+			"description": "Convert spreadsheet data into HTML, Markdown, JIRA, and MediaWiki tables instantly.",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Any"
+		}
+	</script>
+</svelte:head>
 
 <Header>
 	{#snippet title()}
@@ -190,36 +213,43 @@
 
 {#if showAbout}
 	<Modal title="About Tabsalad" onClose={() => (showAbout = false)} fullscreenOnMobile={true}>
+		{#snippet iconSnippet()}
+			<img src="/favicon.ico" alt="" />
+		{/snippet}
 		<div class="about-modal-inner">
-			<div class="about-content-body">
+			<Padding size="l">
 				<div class="about-logo-row">
-					<img src="/favicon.ico" alt="Tabsalad Logo" />
 					<p class="about-tagline">Markdown conversion made simple.</p>
 				</div>
 				<p>
-					Tabsalad is a high-performance utility for converting spreadsheet data into formatted
-					tables for HTML, MediaWiki, GitHub Markdown, and JSON.
+					Tabsalad converts spreadsheet data into formatted tables for HTML, MediaWiki, GitHub
+					Markdown, and JSON.
 				</p>
-				<p>Built with Svelte 5 and the AKUI design system.</p>
+				<p>Built with Svelte 5.</p>
 
-				<InputGroup joined={true} size="small" class="about-social-group">
-					<Button
-						variant="regular"
-						icon="github"
-						label="Source"
-						onclick={() => window.open('https://github.com/AshKyd/tabsalad', '_blank')}
-					/>
-					<Button
-						variant="regular"
-						icon="exclamation-circle"
-						label="Issues"
-						onclick={() => window.open('https://github.com/AshKyd/tabsalad/issues', '_blank')}
-					/>
-				</InputGroup>
+				<div class="about-social-wrapper">
+					<InputGroup joined={true} class="about-social-group">
+						<Button
+							variant="regular"
+							icon="github"
+							label="Source code"
+							onclick={() => window.open('https://github.com/AshKyd/tabsalad', '_blank')}
+						/>
+						<Button
+							variant="regular"
+							icon="exclamation-circle"
+							label="Report an issue"
+							onclick={() => window.open('https://github.com/AshKyd/tabsalad/issues', '_blank')}
+						/>
+					</InputGroup>
+				</div>
+			</Padding>
 
-				<hr class="about-divider" />
-				<p class="about-copyright">© 2008–2026 Ash Kyd</p>
-			</div>
+			<hr class="about-divider" />
+
+			<Padding size="l">
+				<p class="about-copyright">© 2008–2026 <a href="https://ashk.au/">Ash Kyd</a></p>
+			</Padding>
 		</div>
 	</Modal>
 {/if}
@@ -228,7 +258,7 @@
 	.header-controls {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
+		gap: 0.5rem;
 		height: 100%;
 	}
 
@@ -382,7 +412,7 @@
 
 	@media (max-width: 1023px) {
 		.header-controls {
-			gap: 0.75rem;
+			gap: 0.5rem;
 		}
 		.select-wrapper {
 			width: 110px;
@@ -422,13 +452,9 @@
 	.about-logo-row {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		margin-bottom: 0.5rem;
-	}
-
-	.about-logo-row img {
-		height: 2.5rem;
-		width: auto;
+		padding: 1rem 0;
+		justify-content: center;
+		margin-bottom: 1rem;
 	}
 
 	.about-tagline {
@@ -443,8 +469,15 @@
 		margin: 0.5rem 0;
 	}
 
+	.about-social-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+		margin-bottom: 0.5rem;
+	}
+
 	.about-social-group {
-		margin: 0.5rem auto;
+		width: fit-content;
 	}
 
 	.about-copyright {
